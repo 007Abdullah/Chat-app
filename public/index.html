@@ -26,7 +26,8 @@
 
     <!-- Main CSS-->
     <link href="./css/main.css" rel="stylesheet" media="all">
-    <script src="./app.js"></script>
+   
+    <script src="socket.io.js"></script>
 </head>
 
 <body>
@@ -37,19 +38,19 @@
                     <h2 class="title">Sign-Up</h2>
                     <form action="#" onsubmit="return signup()" >
                         <div class="input-group">
-                            <input class="input--style-3" type="text" placeholder="Name" name="name" id="txt_name">
+                            <input class="input--style-3" type="text" placeholder="Name" name="name" id="txt_name" required>
                         </div>
                         <div class="input-group">
-                            <input class="input--style-3" type="email" placeholder="Email" name="email" id="txt_email">
+                            <input class="input--style-3" type="email" placeholder="Email" name="email" id="txt_email" required>
                         </div>
                         <div class="input-group">
                             <input class="input--style-3" type="password" placeholder="Password"
-                                name="Password" id="txt_password">
+                                name="Password" id="txt_password" required>
                             <!-- <i class="zmdi zmdi-calendar-note input-icon js-btn-number"></i> -->
                         </div>
                         <div class="input-group">
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="gender" id="gender_value">
+                                <select name="gender" id="gender_value" required>
                                     <option disabled="disabled" selected="selected">Gender</option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -60,7 +61,7 @@
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-3" type="number" placeholder="Phone" name="phone" id="txt_phoneNumber">
+                            <input class="input--style-3" type="number" placeholder="Phone" required  name="phone" id="txt_phoneNumber">
                         </div>
                         <div class="p-t-10">
                             <button class="btn btn--pill btn--green" type="submit">Submit</button>
@@ -80,7 +81,7 @@
 
     <!-- Main JS-->
     <script src="./js/global.js"></script>
-   
+    <script src="./app.js"></script>
 
 
 </body>

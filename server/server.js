@@ -35,14 +35,35 @@ app.use(morgan('dev'));
 app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
 app.post("/signup", (req, res, next) => {
-    users.push({
-        username: req.body.username,
-        useremail: req.body.useremail,
-        userpassword: req.body.userpassword,
-        usergender: req.body.usergender,
-        userphonenumber: req.body.userphonenumber,
-    });
-    console.log()
+
+    let isFound = false;
+    for (i = 0; i < users.length; i++) {
+        if (users[i].useremail === req.body.useremail) {
+            isFound = i;
+            break;
+        }
+    }
+    if (isFound) {
+        res.send({
+            message: "Email is already exist",
+            status: 305
+        });
+    }
+    else {
+        users.push({
+            username: req.body.username,
+            useremail: req.body.useremail,
+            userpassword: req.body.userpassword,
+            usergender: req.body.usergender,
+            userphonenumber: req.body.userphonenumber,
+        });
+        res.send({
+            message: "Signup SuccessFully",
+            status: 200
+        });
+    }
+
+
 })
 
 
