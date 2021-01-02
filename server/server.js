@@ -35,8 +35,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
-app.get("/", express.static(path.resolve(path.join(__dirname, "public"))));
+app.use("/", express.static(path.join(__dirname, "public")));
+ app.get("/", express.static(path.resolve(path.join(__dirname, "public"))));
 
 app.post("/signup", (req, res, next) => {
 

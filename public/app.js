@@ -1,12 +1,9 @@
-// const url = 'https://git.heroku.com/twitter-applicatin.git';
+
 const url = "http://localhost:5000";
 
 
 
-let currentUser;
-if (localStorage.getItem("currentUser")) {
-    currentUser = JSON.parse(localStorage.getItem("currentUser"));
-}
+
 
 var socket = io(url);
 
@@ -109,12 +106,12 @@ function getdata() {
             jsonRes = JSON.parse((Http.responseText));
             for (i = 0; i < jsonRes.length; i++) {
                 let eachuser = document.createElement("p")
-                eachuser.innerHTML = `<h5>${jsonRes.username}</h5>
-                <label>${jsonRes.userphonenumber}</label>
+                eachuser.innerHTML = `<h5>NAME :${jsonRes[i].username}</h5>
+                <label>PHONE :${jsonRes[i].userphonenumber}</label>
                 <br/>
-                <label>${jsonRes.usertime}</label>
+                <label>TIME :${jsonRes[i].usertime}</label>
                 <br/>
-                <p>${jsonRes.chattxt}</p> `
+                <p>MESSAGE :${jsonRes[i].chattxt}</p> `
                 document.getElementById("result").appendChild(eachuser);
             }
         }
