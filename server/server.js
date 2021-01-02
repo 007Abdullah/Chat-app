@@ -111,6 +111,7 @@ app.post("/send", (req, res, next) => {
         chattxt: req.body.chattxt,
     })
     res.send(chats);
+    io.emit("CURRENTUSER", JSON.stringify(chats[chats.length - 1]));
 
 })
 app.get("/getdata", (req, res, next) => {

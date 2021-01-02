@@ -6,7 +6,6 @@ const url = "http://localhost:5000";
 let currentUser;
 if (localStorage.getItem("currentUser")) {
     currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
 }
 
 var socket = io(url);
@@ -96,6 +95,10 @@ function Send() {
 
 }
 function getdata() {
+    if (localStorage.getItem("currentUser")) {
+        currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        document.getElementById("welcomeUser").innerHTML = `WELLCOME : , ${currentUser.username}`
+    }
     const Http = new XMLHttpRequest();
     Http.open("GET", url + "/getdata");
     Http.setRequestHeader("Content-Type", "application/json");
@@ -104,7 +107,20 @@ function getdata() {
     Http.onreadystatechange = (e) => {
         if (Http.readyState === 4) {
             jsonRes = JSON.parse((Http.responseText));
-            console.log(jsonRes);
+            for (i = 0; i < jsonRes.length; i++) {
+                let eachuser = document.createElement("p")
+                eachuser.innerHTML = `<h5>${jsonRes.username}</h5>
+                <label>${jsonRes.userphonenumber}</label>
+                <br/>
+                <label>${jsonRes.usertime}</label>
+                <br/>
+                <p>${jsonRes.chattxt}</p> `
+                document.getElementById("result").appendChild(eachuser);
+            }
         }
     }
 }
+
+socket.on("CURRENTUSER", (user) => {
+    let curentuser = JSON.parse(user)
+})
