@@ -39,3 +39,12 @@ function signup() {
     }
     return false;
 }
+
+function login() {
+    var logindata = {
+        useremail:document.getElementById("l_email").value,
+        userpassword:document.getElementById("l_password").value
+    }
+
+    return false;
+}
