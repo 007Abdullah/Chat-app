@@ -122,5 +122,16 @@ function getdata() {
 }
 
 socket.on("CURRENTUSER", (user) => {
-    let curentuser = JSON.parse(user)
+    let curentuser = JSON.parse(user);
+
+    let eachuser = document.createElement("p");
+    eachuser.innerHTML = `<h5>${curentuser.username}</h5>
+    <label>${curentuser.userphonenumber}</label>
+    <br/>
+    <label>${curentuser.usertime}</label>
+    <br/>
+    <p>${curentuser.chattxt}</p> `
+    document.getElementById("result").appendChild(eachuser);
+
+
 })
