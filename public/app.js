@@ -15,7 +15,7 @@ function signup() {
         userpassword: document.getElementById("txt_password").value,
         usergender: document.getElementById("gender_value").value,
         userphonenumber: document.getElementById("txt_phoneNumber").value,
-        userPost: [],
+        userChat: [],
     };
 
     const Http = new XMLHttpRequest();
@@ -42,9 +42,27 @@ function signup() {
 
 function login() {
     var logindata = {
-        useremail:document.getElementById("l_email").value,
-        userpassword:document.getElementById("l_password").value
+        useremail: document.getElementById("l_email").value,
+        userpassword: document.getElementById("l_password").value
     }
+    const Http = new XMLHttpRequest();
+    Http.open("POST", url + "/login");
+    Http.setRequestHeader("Content-Type", "application/json");
+    Http.send(JSON.stringify(logindata));
 
+    Http.onreadystatechange = (e) => {
+        if (Http.readyState === 4) {
+
+            // console.log(Http.responseText)
+            let jsonRes = JSON.parse(Http.responseText)
+
+            if (jsonRes.status === 200) {
+                alert(jsonRes.message);
+                window.location.href = "Dashborad.html";
+            } else {
+                alert(jsonRes.message);
+            }
+        }
+    }
     return false;
 }
