@@ -5,12 +5,14 @@ let users = [
         userpassword: "123",
         usergender: "Male",
         userphonenumber: "0312",
-        userChat:[]
+        userChat: []
     },
 ];
 let chats = [
     {
         username: "some name",
+        userphonenumber: "123",
+        usertime: "12.45",
         chattxt: "Hello Merii Jan",
     },
 ];
@@ -101,7 +103,19 @@ app.post("/login", (req, res, next) => {
         });
     }
 })
+app.post("/send", (req, res, next) => {
+    chats.push({
+        username: req.body.username,
+        userphonenumber: req.body.userphonenumber,
+        usertime: req.body.usertime,
+        chattxt: req.body.chattxt,
+    })
+    res.send(chats);
 
+})
+app.get("/getdata", (req, res, next) => {
+    res.send(chats)
+})
 
 server.listen(PORT, () => {
     console.log("Server is Running :", PORT);

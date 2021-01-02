@@ -13,14 +13,14 @@
     <link rel="stylesheet" href="./css/index.css" type="text/css">
 </head>
 
-<body>
+<body onload="getdata()">
     <div class="container">
         <div class="row">
             <div class="col-lg">
 
             </div>
-            <div class="col-lg center">
-                One of three columns
+            <div class="col-lg center"  id="result">
+               
             </div>
             <div class="col-lg">
 
@@ -31,7 +31,7 @@
 
             </div>
             <div class="col-lg">
-                <input id="userPost" placeholder="whats on your mind?" class="posts__input" maxlength="150">
+                <input id="usermsg" placeholder="whats on your mind?" class="posts__input" maxlength="150">
                 <button id="postBtn" class="post__button" onclick="Send()">Send</button>
             </div>
             <div class="col-lg">
@@ -49,6 +49,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>

@@ -2,6 +2,13 @@
 const url = "http://localhost:5000";
 
 
+
+let currentUser;
+if (localStorage.getItem("currentUser")) {
+    currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+}
+
 var socket = io(url);
 
 io.on("connect", function () {
@@ -58,6 +65,7 @@ function login() {
 
             if (jsonRes.status === 200) {
                 alert(jsonRes.message);
+                localStorage.setItem("currentUser", JSON.stringify(jsonRes.currentUser));
                 window.location.href = "Dashborad.html";
             } else {
                 alert(jsonRes.message);
@@ -65,4 +73,38 @@ function login() {
         }
     }
     return false;
+}
+
+function Send() {
+    let chattxt = document.getElementById("usermsg").value;
+    const Http = new XMLHttpRequest();
+    Http.open("POST", url + "/send");
+    Http.setRequestHeader("Content-Type", "application/json");
+
+    Http.send(JSON.stringify({
+        username: currentUser.username,
+        userphonenumber: currentUser.userphonenumber,
+        usertime: new Date().getTime(),
+        chattxt: chattxt,
+    }));
+    Http.onreadystatechange = (e) => {
+        if (Http.readyState === 4) {
+            jsonRes = JSON.parse((Http.responseText));
+            console.log("posted success");
+        }
+    }
+
+}
+function getdata() {
+    const Http = new XMLHttpRequest();
+    Http.open("GET", url + "/getdata");
+    Http.setRequestHeader("Content-Type", "application/json");
+
+    Http.send();
+    Http.onreadystatechange = (e) => {
+        if (Http.readyState === 4) {
+            jsonRes = JSON.parse((Http.responseText));
+            console.log(jsonRes);
+        }
+    }
 }
