@@ -1,0 +1,16 @@
+body{
+    background-color: #14191d;
+}
+.center{
+    background-color: #08567a3a;
+    top:50px;
+    color: wheat;
+    height: 500px;
+}
+.posts__input{
+    width: 295px;
+    float: left;
+}
+.post__button{
+    float: right;
+}
