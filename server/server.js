@@ -5,7 +5,7 @@ let users = [
         userpassword: "123",
         usergender: "Male",
         userphonenumber: "0312",
-        userChat: []
+
     },
 ];
 let chats = [
@@ -13,7 +13,7 @@ let chats = [
         username: "some name",
         userphonenumber: "123",
         usertime: "12.45",
-        chattxt: "Hello Merii Jan",
+        chattxt: "Hello Jan",
     },
 ];
 const PORT = process.env.PORT || 5000;
@@ -25,19 +25,27 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const morgan = require("morgan");
 
+
+
+
 var app = express();
 
 var server = http.createServer(app);
 
-var io = socketIO(server);
+const io = socketIO(server, {
+    cors: {
+        origin: "*"
+    },
+})
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
 
-app.use("/", express.static(path.join(__dirname, "public")));
- app.get("/", express.static(path.resolve(path.join(__dirname, "public"))));
+// app.use("/", express.static(path.join(__dirname, "public")));
 
+
+app.use("/", express.static(path.resolve(path.join(__dirname, "public"))));
 app.post("/signup", (req, res, next) => {
 
     let isFound = false;
@@ -112,7 +120,6 @@ app.post("/send", (req, res, next) => {
     })
     res.send(chats);
     io.emit("CURRENTUSER", JSON.stringify(chats[chats.length - 1]));
-
 })
 app.get("/getdata", (req, res, next) => {
     res.send(chats)

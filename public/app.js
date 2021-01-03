@@ -1,13 +1,13 @@
 
+
+
 const url = "http://localhost:5000";
-
-
 
 
 
 var socket = io(url);
 
-io.on("connect", function () {
+io.on("connect", () => {
     console.log("user is connect")
 })
 
@@ -76,11 +76,10 @@ function Send() {
     const Http = new XMLHttpRequest();
     Http.open("POST", url + "/send");
     Http.setRequestHeader("Content-Type", "application/json");
-
     Http.send(JSON.stringify({
         username: currentUser.username,
         userphonenumber: currentUser.userphonenumber,
-        usertime: new Date().getTime(),
+        usertime: new Date().toLocaleTimeString(),
         chattxt: chattxt,
     }));
     Http.onreadystatechange = (e) => {

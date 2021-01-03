@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>DashBoard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,31 +18,32 @@
 <body onload="getdata()">
     <div class="container">
         <div class="row">
-            <h4 style="text-align: center; color: aliceblue;" id="welcomeUser"></h4>
+            <div class="top-row">
+                <h4 style="text-align: center; color: aliceblue;" id="welcomeUser"></h4>
+            </div>
+
         </div>
         <div class="row">
             <div class="col-lg">
 
             </div>
-            <div class="col-lg center"  id="result">
-               
+            <div class="col-lg center" id="result">
+
             </div>
             <div class="col-lg">
 
             </div>
         </div>
+        <br>
+        <br>
+        <br>
         <div class="row">
-            <div class="col-lg">
-
-            </div>
-            <div class="col-lg">
+            <div class="top-row">
                 <input id="usermsg" placeholder="whats on your mind?" class="posts__input" maxlength="150">
-                <button id="postBtn" class="post__button" onclick="Send()">Send</button>
-            </div>
-            <div class="col-lg">
-
+                <button id="postBtn" class="btn btn-dark" onclick="Send()">Send</button>
             </div>
         </div>
+
     </div>
 
 

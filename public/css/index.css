@@ -5,12 +5,18 @@ body{
     background-color: #08567a3a;
     top:50px;
     color: wheat;
-    height: 500px;
+    height: 500px;  
+    overflow: auto;
 }
-.posts__input{
-    width: 295px;
+ .posts__input{
+    width: 290px;
     float: left;
 }
 .post__button{
     float: right;
+} 
+.top-row{
+    text-align: center;
+    color: aliceblue;
+    margin: 0 auto;
 }
